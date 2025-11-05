@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe | Creative Engineering Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Fredoka:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2d3748;
+        }
+        .creative-font {
+            font-family: 'Comic Neue', cursive;
+        }
+        .creative-bg {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .card-creative {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            border: 3px solid #2d3748;
+            box-shadow: 8px 8px 0 #2d3748;
+            transform: rotate(-1deg);
+            transition: all 0.3s ease;
+        }
+        .card-creative:hover {
+            transform: rotate(0deg) translateY(-10px);
+            box-shadow: 15px 15px 0 #2d3748;
+        }
+        .card-creative:nth-child(even) {
+            transform: rotate(1deg);
+        }
+        .card-creative:nth-child(even):hover {
+            transform: rotate(0deg) translateY(-10px);
+        }
+        .doodle-border {
+            border: 2px dashed #2d3748;
+            border-radius: 20px;
+        }
+        .hand-drawn {
+            position: relative;
+        }
+        .hand-drawn:before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid #2d3748;
+            border-radius: 25px;
+            opacity: 0.3;
+        }
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translate(0, 0px) rotate(0deg); }
+            50% { transform: translate(10px, -15px) rotate(5deg); }
+            100% { transform: translate(0, 0px) rotate(0deg); }
+        }
+        .skill-bar-creative {
+            height: 20px;
+            border-radius: 10px;
+            background: #e2e8f0;
+            border: 2px solid #2d3748;
+            overflow: hidden;
+            position: relative;
+        }
+        .skill-progress-creative {
+            height: 100%;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+            position: relative;
+            transition: width 1.5s ease-in-out;
+        }
+        .skill-progress-creative:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.3"/></svg>');
+            background-size: 20px 20px;
+            animation: movePattern 2s linear infinite;
+        }
+        @keyframes movePattern {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 20px; }
+        }
+        .nav-creative a {
+            position: relative;
+            padding: 10px 20px;
+            margin: 0 5px;
+            background: white;
+            border: 2px solid #2d3748;
+            border-radius: 50px;
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 0 #2d3748;
+        }
+        .nav-creative a:hover {
+            transform: rotate(2deg) scale(1.1);
+            background: #ffeaa7;
+        }
+        .nav-creative a:nth-child(even) {
+            transform: rotate(2deg);
+        }
+        .nav-creative a:nth-child(even):hover {
+            transform: rotate(-2deg) scale(1.1);
+        }
+        .timeline-creative {
+            position: relative;
+        }
+        .timeline-creative:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #2d3748;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .timeline-item-creative {
+            position: relative;
+            width: 45%;
+            margin-bottom: 60px;
+        }
+        .timeline-item-creative:nth-child(odd) {
+            left: 0;
+        }
+        .timeline-item-creative:nth-child(even) {
+            left: 55%;
+        }
+        .timeline-dot-creative {
+            position: absolute;
+            top: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #ff6b6b;
+            border: 3px solid #2d3748;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+        .timeline-item-creative:nth-child(odd) .timeline-dot-creative {
+            right: -45px;
+        }
+        .timeline-item-creative:nth-child(even) .timeline-dot-creative {
+            left: -45px;
+        }
+        .contact-input-creative {
+            background: white;
+            border: 2px solid #2d3748;
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 0 #2d3748;
+        }
+        .contact-input-creative:focus {
+            outline: none;
+            box-shadow: 8px 8px 0 #2d3748;
+            transform: translate(-2px, -2px);
+        }
+        .doodle-1 {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,50 Q40,30 60,50 T100,50" stroke="%232d3748" fill="none" stroke-width="2"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .doodle-2 {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="%232d3748" fill="none" stroke-width="2"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .sticker {
+            position: absolute;
+            background: #ffeaa7;
+            border: 2px solid #2d3748;
+            padding: 5px 10px;
+            border-radius: 10px;
+            transform: rotate(-5deg);
+            box-shadow: 3px 3px 0 #2d3748;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="min-h-screen creative-bg">
+    <!-- Doodle Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 opacity-20">
+        <div class="absolute w-32 h-32 doodle-1 float" style="top: 10%; left: 5%;"></div>
+        <div class="absolute w-24 h-24 doodle-2 float" style="top: 60%; left: 80%; animation-delay: 2s;"></div>
+        <div class="absolute w-40 h-40 doodle-1 float" style="top: 20%; left: 75%; animation-delay: 4s;"></div>
+        <div class="absolute w-28 h-28 doodle-2 float" style="top: 70%; left: 10%; animation-delay: 1s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="relative z-50 py-6">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-white border-2 border-gray-800 rounded-full flex items-center justify-center bounce">
+                        <i class="fas fa-palette text-2xl" style="color: #ff6b6b;"></i>
+                    </div>
+                    <span class="creative-font text-3xl font-bold" style="text-shadow: 3px 3px 0 #ffeaa7;">JOHN DOE</span>
+                </div>
+                <div class="flex nav-creative space-x-2">
+                    <a href="#about" class="text-gray-800 font-bold">ABOUT</a>
+                    <a href="#projects" class="text-gray-800 font-bold">PROJECTS</a>
+                    <a href="#skills" class="text-gray-800 font-bold">SKILLS</a>
+                    <a href="#experience" class="text-gray-800 font-bold">EXPERIENCE</a>
+                    <a href="#contact" class="text-gray-800 font-bold">CONTACT</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="sticker" style="top: -20px; left: -20px; background: #ff6b6b; color: white;">CREATIVE CODER</div>
+                    <div class="sticker" style="bottom: -20px; right: -20px; background: #4ecdc4; color: white;">DIGITAL ARTIST</div>
+                    <div class="card-creative p-8 hand-drawn">
+                        <h1 class="creative-font text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                            Hello! I'm<br>
+                            <span style="color: #ff6b6b;">John</span>
+                            <span style="color: #4ecdc4;">Doe</span>
+                        </h1>
+                        <p class="text-xl mb-8 leading-relaxed">
+                            I turn complex problems into <span class="creative-font font-bold" style="color: #45b7d1;">beautiful solutions</span> 
+                            through code, creativity, and a touch of magic ✨
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#projects" class="px-6 py-3 bg-white border-2 border-gray-800 rounded-full font-bold hover:bg-yellow-200 transition-all bounce">
+                                SEE MY ART 🎨
+                            </a>
+                            <a href="#contact" class="px-6 py-3 bg-white border-2 border-gray-800 rounded-full font-bold hover:bg-green-200 transition-all bounce" style="animation-delay: 0.2s;">
+                                LET'S CHAT 💬
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="card-creative p-6" style="transform: rotate(3deg);">
+                        <div class="w-64 h-64 mx-auto bg-gradient-to-br from-purple-400 to-pink-400 rounded-full border-4 border-gray-800 flex items-center justify-center">
+                            <i class="fas fa-laptop-code text-white text-8xl"></i>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 card-creative px-6 py-3" style="background: #96ceb4;">
+                        <p class="creative-font font-bold text-lg">3rd Year Engineering</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="creative-font text-5xl font-bold mb-6" style="text-shadow: 4px 4px 0 #ffeaa7;">About Me 🎯</h2>
+                <div class="w-48 h-2 bg-gray-800 mx-auto mb-4 rounded-full"></div>
+                <p class="text-xl max-w-2xl mx-auto">Part engineer, part artist, full-time creative problem solver!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div class="card-creative p-6">
+                        <h3 class="creative-font text-3xl font-bold mb-4" style="color: #ff6b6b;">My Story 📖</h3>
+                        <p class="text-lg leading-relaxed mb-4">
+                            I believe that coding is an art form, and every project is a canvas waiting to be brought to life. 
+                            As a Computer Engineering student, I combine technical precision with creative flair to build 
+                            solutions that are not just functional, but truly delightful.
+                        </p>
+                        <p class="text-lg leading-relaxed">
+                            When I'm not coding, you'll find me sketching, designing, or exploring new ways to make technology 
+                            more human and accessible. I'm currently seeking opportunities where I can blend my engineering 
+                            skills with my creative passions.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="card-creative p-4 text-center" style="background: #ffeaa7;">
+                            <div class="creative-font text-2xl font-bold mb-2">12+</div>
+                            <div class="font-bold">CREATIVE PROJECTS</div>
+                        </div>
+                        <div class="card-creative p-4 text-center" style="background: #96ceb4;">
+                            <div class="creative-font text-2xl font-bold mb-2">5</div>
+                            <div class="font-bold">ART FORMS</div>
+                        </div>
+                        <div class="card-creative p-4 text-center" style="background: #45b7d1;">
+                            <div class="creative-font text-2xl font-bold mb-2">3</div>
+                            <div class="font-bold">INTERNSHIPS</div>
+                        </div>
+                        <div class="card-creative p-4 text-center" style="background: #ff6b6b; color: white;">
+                            <div class="creative-font text-2xl font-bold mb-2">∞</div>
+                            <div class="font-bold">IDEAS</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="card-creative p-6" style="background: #4ecdc4;">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-white border-2 border-gray-800 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-graduation-cap text-2xl"></i>
+                            </div>
+                            <h3 class="creative-font text-2xl font-bold">Education 🎓</h3>
+                        </div>
+                        <p class="font-bold text-lg">B.Tech Computer Engineering</p>
+                        <p class="text-gray-700">ABC University | 2021-2025</p>
+                        <p class="text-gray-600">CGPA: 8.9/10</p>
+                    </div>
+                    
+                    <div class="card-creative p-6" style="background: #ffeaa7;">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-white border-2 border-gray-800 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-bullseye text-2xl"></i>
+                            </div>
+                            <h3 class="creative-font text-2xl font-bold">Mission 🎯</h3>
+                        </div>
+                        <p class="font-bold text-lg">Creative Technologist</p>
+                        <p class="text-gray-700">Seeking Summer 2024 Internship</p>
+                        <p class="text-gray-600">Where art meets code</p>
+                    </div>
+                    
+                    <div class="card-creative p-6" style="background: #ff6b6b; color: white;">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-white border-2 border-gray-800 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-2xl"></i>
+                            </div>
+                            <h3 class="creative-font text-2xl font-bold">Location 🌍</h3>
+                        </div>
+                        <p class="font-bold text-lg">New York, USA</p>
+                        <p class="text-gray-200">Open to remote adventures</p>
+                        <p class="text-gray-300">And creative collaborations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="creative-font text-5xl font-bold mb-6" style="text-shadow: 4px 4px 0 #96ceb4;">My Creations 🚀</h2>
+                <div class="w-48 h-2 bg-gray-800 mx-auto mb-4 rounded-full"></div>
+                <p class="text-xl max-w-2xl mx-auto">Where imagination meets implementation</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="card-creative group">
+                    <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-400 border-b-4 border-gray-800 flex items-center justify-center relative overflow-hidden">
+                        <i class="fas fa-robot text-white text-6xl bounce"></i>
+                        <div class="absolute top-4 right-4 bg-white border-2 border-gray-800 px-3 py-1 rounded-full font-bold">
+                            AI ART
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="creative-font text-2xl font-bold mb-3" style="color: #764ba2;">Creative Vision AI</h3>
+                        <p class="text-gray-700 mb-6">
+                            An AI that turns imagination into digital art. Because why should humans have all the fun?
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full border border-purple-300 font-bold">PYTHON</span>
+                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full border border-pink-300 font-bold">ML</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full border border-blue-300 font-bold">CREATIVITY</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="#" class="font-bold hover:underline">SEE MAGIC</a>
+                            <a href="#" class="font-bold hover:underline">PLAY</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="card-creative group">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-blue-400 border-b-4 border-gray-800 flex items-center justify-center relative overflow-hidden">
+                        <i class="fas fa-mobile-alt text-white text-6xl bounce" style="animation-delay: 0.2s;"></i>
+                        <div class="absolute top-4 right-4 bg-white border-2 border-gray-800 px-3 py-1 rounded-full font-bold">
+                            MOBILE
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="creative-font text-2xl font-bold mb-3" style="color: #2d3748;">Doodle Task Manager</h3>
+                        <p class="text-gray-700 mb-6">
+                            Productivity app that feels like playing. Because boring tasks deserve fun solutions!
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full border border-green-300 font-bold">REACT</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full border border-yellow-300 font-bold">FIREBASE</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full border border-red-300 font-bold">FUN</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="#" class="font-bold hover:underline">EXPLORE</a>
+                            <a href="#" class="font-bold hover:underline">TRY IT</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="card-creative group">
+                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-red-400 border-b-4 border-gray-800 flex items-center justify-center relative overflow-hidden">
+                        <i class="fas fa-chart-line text-white text-6xl bounce" style="animation-delay: 0.4s;"></i>
+                        <div class="absolute top-4 right-4 bg-white border-2 border-gray-800 px-3 py-1 rounded-full font-bold">
+                            DATA ART
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="creative-font text-2xl font-bold mb-3" style="color: #e53e3e;">Visual Data Stories</h3>
+                        <p class="text-gray-700 mb-6">
+                            Turning boring numbers into beautiful, interactive data visualizations that tell stories.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full border border-orange-300 font-bold">D3.JS</span>
+                            <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full border border-teal-300 font-bold">PYTHON</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full border border-indigo-300 font-bold">ART</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="#" class="font-bold hover:underline">VIEW</a>
+                            <a href="#" class="font-bold hover:underline">INTERACT</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="creative-font text-5xl font-bold mb-6" style="text-shadow: 4px 4px 0 #ff6b6b;">My Toolbox 🛠️</h2>
+                <div class="w-48 h-2 bg-gray-800 mx-auto mb-4 rounded-full"></div>
+                <p class="text-xl">The colors on my creative palette</p>
+            </div>
+            
+            <div class="space-y-8">
+                <div>
+                    <div class="flex justify-between mb-3">
+                        <span class="creative-font text-xl font-bold">Python Artistry</span>
+                        <span class="creative-font text-xl font-bold" style="color: #ff6b6b;">90%</span>
+                    </div>
+                    <div class="skill-bar-creative">
+                        <div class="skill-progress-creative" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-3">
+                        <span class="creative-font text-xl font-bold">JavaScript Creativity</span>
+                        <span class="creative-font text-xl font-bold" style="color: #4ecdc4;">85%</span>
+                    </div>
+                    <div class="skill-bar-creative">
+                        <div class="skill-progress-creative" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-3">
+                        <span class="creative-font text-xl font-bold">React Imagination</span>
+                        <span class="creative-font text-xl font-bold" style="color: #45b7d1;">80%</span>
+                    </div>
+                    <div class="skill-bar-creative">
+                        <div class="skill-progress-creative" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-3">
+                        <span class="creative-font text-xl font-bold">Design Thinking</span>
+                        <span class="creative-font text-xl font-bold" style="color: #96ceb4;">95%</span>
+                    </div>
+                    <div class="skill-bar-creative">
+                        <div class="skill-progress-creative" style="width: 95%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="creative-font text-5xl font-bold mb-6" style="text-shadow: 4px 4px 0 #ffeaa7;">My Journey 🌟</h2>
+                <div class="w-48 h-2 bg-gray-800 mx-auto mb-4 rounded-full"></div>
+                <p class="text-xl">The story so far...</p>
+            </div>
+            
+            <div class="timeline-creative">
+                <!-- Experience 1 -->
+                <div class="timeline-item-creative">
+                    <div class="timeline-dot-creative">1</div>
+                    <div class="card-creative p-6" style="background: #ff6b6b; color: white;">
+                        <h3 class="creative-font text-2xl font-bold mb-3">Creative Developer</h3>
+                        <p class="font-bold mb-4">Tech Art Studio | Summer 2023</p>
+                        <p>Where I learned that code can be poetry and pixels can dance. Built magical interfaces that made users smile.</p>
+                    </div>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="timeline-item-creative">
+                    <div class="timeline-dot-creative">2</div>
+                    <div class="card-creative p-6" style="background: #4ecdc4;">
+                        <h3 class="creative-font text-2xl font-bold mb-3">Innovation Lead</h3>
+                        <p class="font-bold mb-4">Creative Coding Club | 2022-Present</p>
+                        <p>Teaching others that coding is like painting with logic. Organized hackathons that felt more like art festivals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="creative-font text-5xl font-bold mb-6" style="text-shadow: 4px 4px 0 #45b7d1;">Let's Create Together! 🎨</h2>
+                <div class="w-48 h-2 bg-gray-800 mx-auto mb-4 rounded-full"></div>
+                <p class="text-xl">Got a wild idea? Let's make it real!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <form class="space-y-6">
+                        <input type="text" placeholder="Your Awesome Name" class="w-full contact-input-creative">
+                        <input type="email" placeholder="Your Creative Email" class="w-full contact-input-creative">
+                        <input type="text" placeholder="What's Your Big Idea?" class="w-full contact-input-creative">
+                        <textarea placeholder="Tell Me About Your Vision..." rows="5" class="w-full contact-input-creative"></textarea>
+                        <button type="submit" class="w-full px-8 py-4 bg-white border-2 border-gray-800 rounded-full font-bold text-xl hover:bg-yellow-200 transition-all bounce">
+                            SEND MESSAGE 🚀
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="card-creative p-6" style="background: #ffeaa7;">
+                        <h3 class="creative-font text-2xl font-bold mb-4">Find Me Here 📍</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-white border-2 border-gray-800 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold">john.doe@creative.dev</p>
+                                    <p class="text-gray-700">For magical collaborations</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-white border-2 border-gray-800 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold">+1 (123) 456-7890</p>
+                                    <p class="text-gray-700">Let's chat creativity</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-white border-2 border-gray-800 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold">New York, USA</p>
+                                    <p class="text-gray-700">But my ideas are global</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-creative p-6" style="background: #96ceb4;">
+                        <h3 class="creative-font text-2xl font-bold mb-4">Follow the Creativity 🌈</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 bg-white border-2 border-gray-800 rounded-full flex items-center justify-center hover:bg-blue-100 transition-all bounce">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-white border-2 border-gray-800 rounded-full flex items-center justify-center hover:bg-purple-100 transition-all bounce" style="animation-delay: 0.1s;">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-white border-2 border-gray-800 rounded-full flex items-center justify-center hover:bg-pink-100 transition-all bounce" style="animation-delay: 0.2s;">
+                                <i class="fab fa-dribbble text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-white border-2 border-gray-800 rounded-full flex items-center justify-center hover:bg-blue-100 transition-all bounce" style="animation-delay: 0.3s;">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="creative-font text-xl font-bold">Made with 💖 and a whole lot of creativity</p>
+            <p class="text-gray-700 mt-2">&copy; 2023 John Doe. Keep creating! 🎨</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add some interactive fun
+        document.querySelectorAll('.card-creative').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
+
+        // Bounce buttons on click
+        document.querySelectorAll('a, button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

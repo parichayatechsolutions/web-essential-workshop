@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe | Engineering Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .industrial-font {
+            font-family: 'Archivo Black', sans-serif;
+        }
+        .concrete-bg {
+            background: 
+                linear-gradient(45deg, #1a1a1a 25%, transparent 25%), 
+                linear-gradient(-45deg, #1a1a1a 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #1a1a1a 75%), 
+                linear-gradient(-45deg, transparent 75%, #1a1a1a 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+        .metal-accent {
+            color: #8c8c8c;
+        }
+        .rust-accent {
+            color: #8b4513;
+        }
+        .card-industrial {
+            background: #1a1a1a;
+            border: 3px solid #333;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .card-industrial:hover {
+            border-color: #8b4513;
+            transform: translate(-5px, -5px);
+            box-shadow: 5px 5px 0 #8b4513;
+        }
+        .card-industrial:before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: -5px;
+            bottom: -5px;
+            background: #333;
+            z-index: -1;
+        }
+        .skill-bar-industrial {
+            height: 8px;
+            background: #333;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-progress-industrial {
+            height: 100%;
+            background: #8c8c8c;
+            position: relative;
+            transition: width 1.5s ease-in-out;
+        }
+        .skill-progress-industrial:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: scan 2s linear infinite;
+        }
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .nav-industrial a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            background: #1a1a1a;
+            border: 2px solid #333;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .nav-industrial a:hover {
+            background: #8b4513;
+            border-color: #8b4513;
+            transform: translateY(-2px);
+        }
+        .timeline-industrial {
+            position: relative;
+            padding-left: 3rem;
+        }
+        .timeline-industrial:before {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #333;
+        }
+        .timeline-item-industrial {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+        .timeline-dot-industrial {
+            position: absolute;
+            left: -1.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #8c8c8c;
+            border: 2px solid #1a1a1a;
+        }
+        .contact-input-industrial {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            padding: 1rem;
+            color: #fff;
+            width: 100%;
+            margin-bottom: 1rem;
+            font-family: 'Space Mono', monospace;
+            transition: all 0.3s ease;
+        }
+        .contact-input-industrial:focus {
+            outline: none;
+            border-color: #8b4513;
+            background: #262626;
+        }
+        .section-divider {
+            border-bottom: 3px solid #333;
+            margin: 4rem 0;
+        }
+        .bolt {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #8c8c8c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        .grid-overlay {
+            background-image: 
+                linear-gradient(#333 1px, transparent 1px),
+                linear-gradient(90deg, #333 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center center;
+            opacity: 0.1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+        .industrial-number {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3rem;
+            color: #8c8c8c;
+            line-height: 1;
+        }
+        .structural-line {
+            height: 3px;
+            background: #333;
+            margin: 2rem 0;
+            position: relative;
+        }
+        .structural-line:after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 0;
+            width: 50px;
+            height: 9px;
+            background: #8b4513;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Grid Overlay -->
+    <div class="fixed inset-0 grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="relative z-50 py-6 border-b-3 border-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-1a1a1a border-3 border-gray-700 flex items-center justify-center">
+                        <i class="fas fa-cog metal-accent text-xl"></i>
+                    </div>
+                    <span class="industrial-font text-2xl tracking-tight">
+                        JOHN<span class="rust-accent">//DOE</span>
+                    </span>
+                </div>
+                <div class="hidden md:flex nav-industrial space-x-2">
+                    <a href="#about" class="metal-accent">ABOUT</a>
+                    <a href="#projects" class="metal-accent">PROJECTS</a>
+                    <a href="#skills" class="metal-accent">SKILLS</a>
+                    <a href="#experience" class="metal-accent">EXPERIENCE</a>
+                    <a href="#contact" class="metal-accent">CONTACT</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="p-2 border-2 border-gray-700 metal-accent">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 px-4 concrete-bg relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="card-industrial mb-6">
+                        <span class="metal-accent text-sm tracking-widest">STRUCTURAL ENGINEER // DEVELOPER</span>
+                    </div>
+                    <h1 class="industrial-font text-5xl md:text-6xl leading-tight mb-6">
+                        BUILDING<br>
+                        <span class="rust-accent">SOLID</span><br>
+                        FOUNDATIONS
+                    </h1>
+                    <div class="structural-line"></div>
+                    <p class="metal-accent text-lg mb-8 max-w-md">
+                        Engineering robust systems with structural integrity and uncompromising performance.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="px-6 py-3 bg-1a1a1a border-2 border-gray-700 metal-accent hover:border-rust-accent hover:rust-accent transition-all duration-300">
+                            VIEW STRUCTURES
+                        </a>
+                        <a href="#contact" class="px-6 py-3 border-2 border-gray-700 metal-accent hover:bg-rust-accent hover:border-rust-accent transition-all duration-300">
+                            REQUEST BLUEPRINT
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="card-industrial">
+                        <div class="w-full h-80 bg-gradient-to-br from-gray-900 to-black border-3 border-gray-700 flex items-center justify-center relative">
+                            <i class="fas fa-industry metal-accent text-8xl"></i>
+                            <div class="bolt" style="top: 20px; left: 20px;">
+                                <i class="fas fa-bolt text-black text-xs"></i>
+                            </div>
+                            <div class="bolt" style="top: 20px; right: 20px;">
+                                <i class="fas fa-bolt text-black text-xs"></i>
+                            </div>
+                            <div class="bolt" style="bottom: 20px; left: 20px;">
+                                <i class="fas fa-bolt text-black text-xs"></i>
+                            </div>
+                            <div class="bolt" style="bottom: 20px; right: 20px;">
+                                <i class="fas fa-bolt text-black text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-industrial absolute -bottom-6 -right-6">
+                        <span class="rust-accent font-bold">AVAILABLE FOR CONSTRUCTION</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="industrial-font text-4xl mb-4">STRUCTURAL ANALYSIS</h2>
+                <div class="structural-line mx-auto w-48"></div>
+                <p class="metal-accent max-w-2xl mx-auto">Engineering fundamentals and structural integrity assessment</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="card-industrial">
+                        <h3 class="industrial-font text-2xl mb-6 rust-accent">ENGINEERING PROFILE</h3>
+                        <div class="space-y-4 metal-accent">
+                            <p>
+                                I approach software development as structural engineering—focusing on robust foundations, 
+                                load-bearing architectures, and systems that withstand the test of time and scale.
+                            </p>
+                            <p>
+                                Every component is stress-tested, every interface is reinforced, and every system 
+                                is built with the same precision as a skyscraper's framework.
+                            </p>
+                            <p>
+                                Currently seeking construction projects where I can apply my structural engineering 
+                                principles to build systems that don't just work—they endure.
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+                            <div class="text-center">
+                                <div class="industrial-number">12+</div>
+                                <div class="metal-accent text-sm">STRUCTURES</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="industrial-number">5</div>
+                                <div class="metal-accent text-sm">MATERIALS</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="industrial-number">3</div>
+                                <div class="metal-accent text-sm">CONSTRUCTION SITES</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="industrial-number">2</div>
+                                <div class="metal-accent text-sm">CERTIFICATIONS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="card-industrial">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-gray-800 border-2 border-gray-700 flex items-center justify-center mr-4">
+                                <i class="fas fa-graduation-cap metal-accent"></i>
+                            </div>
+                            <h3 class="industrial-font text-xl rust-accent">EDUCATION</h3>
+                        </div>
+                        <div class="space-y-2 metal-accent">
+                            <p class="font-bold">B.Tech Computer Engineering</p>
+                            <p class="text-sm">ABC University</p>
+                            <p class="text-sm">2021 - 2025</p>
+                            <p class="text-sm">Structural GPA: 8.9/10</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card-industrial">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-gray-800 border-2 border-gray-700 flex items-center justify-center mr-4">
+                                <i class="fas fa-bullseye metal-accent"></i>
+                            </div>
+                            <h3 class="industrial-font text-xl rust-accent">SPECIALIZATION</h3>
+                        </div>
+                        <div class="space-y-2 metal-accent">
+                            <p class="font-bold">Systems Architecture</p>
+                            <p class="text-sm">Structural Engineering</p>
+                            <p class="text-sm">Seeking 2024 Projects</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card-industrial">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-gray-800 border-2 border-gray-700 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt metal-accent"></i>
+                            </div>
+                            <h3 class="industrial-font text-xl rust-accent">LOCATION</h3>
+                        </div>
+                        <div class="space-y-2 metal-accent">
+                            <p class="font-bold">New York, USA</p>
+                            <p class="text-sm">Global Construction</p>
+                            <p class="text-sm">Remote Foundations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 concrete-bg">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="industrial-font text-4xl mb-4">CONSTRUCTION PROJECTS</h2>
+                <div class="structural-line mx-auto w-48"></div>
+                <p class="metal-accent max-w-2xl mx-auto">Engineered structures built to withstand extreme conditions</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="card-industrial">
+                    <div class="h-48 bg-gradient-to-br from-gray-900 to-black border-b-3 border-gray-700 flex items-center justify-center relative">
+                        <i class="fas fa-robot metal-accent text-6xl"></i>
+                        <div class="absolute top-4 right-4 bg-1a1a1a border-2 border-gray-700 px-3 py-1">
+                            <span class="metal-accent text-sm">AI INFRASTRUCTURE</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="industrial-font text-xl mb-3 rust-accent">NEURAL FRAMEWORK</h3>
+                        <p class="metal-accent mb-6 text-sm">
+                            Structural AI system with reinforced learning architecture and load-distributed processing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-gray-800 metal-accent px-3 py-1 text-xs border border-gray-700">PYTHON</span>
+                            <span class="bg-gray-800 metal-accent px-3 py-1 text-xs border border-gray-700">TENSORFLOW</span>
+                            <span class="bg-gray-800 metal-accent px-3 py-1 text-xs border border-gray-700">ARCHITECTURE</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <a href="#" class="rust-accent hover:metal-accent">INSPECT</a>
+                            <a href="#" class="metal-accent hover:rust-accent">SPECIFICATIONS</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="card-industrial">
+                    <div class="h-48 bg-gradient-to-br from-gray-900 to-black border-b-3 border-gray-700 flex items-center justify-center relative">
+                        <i class="fas fa-server metal-accent text-6xl"></i>
+                        <div class="absolute top-4 right-4 bg-1a1a1a border-2 border-gray-700 px-3 py-1">
+                            <span class="metal-accent text-sm">INFRASTRUCTURE</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="industrial-font text-xl mb-3 rust-accent">LOAD BALANCER</h3>
+                        <p class="metal-accent mb-6 text-sm">
+                            High-capacity load distribution system with fail-safe mechanisms and structural redundancy.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-gray-800 metal-accent px-3 py-1 text-xs border border-gray-700">NODE.JS</span>
+                            <span class="bg-gray-800 metal-accent px-3 py-1 text-xs border border-gray-700">DOCKER</span>
+                            <span class="bg-gray-800 metal-accent px-3 py-1 text-xs border border-gray-700">SCALABILITY</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <a href="#" class="rust-accent hover:metal-accent">INSPECT</a>
+                            <a href="#" class="metal-accent hover:rust-accent">SPECIFICATIONS</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="card-industrial">
+                    <div class="h-48 bg-gradient-to-br from-gray-900 to-black border-b-3 border-gray-700 flex items-center justify-center relative">
+                        <i class="fas fa-database metal-accent text-6xl"></i>
+                        <div class="absolute top-4 right-4 bg-1a1a1a border-2 border-gray-700 px-3 py-1">
+                            <span class="metal-accent text-sm">DATA STRUCTURE</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="industrial-font text-xl mb-3 rust-accent">DATA FRAMEWORK</h3>
+                        <p class="metal-accent mb-6 text-sm">
+                            Structural data architecture with reinforced integrity and distributed storage systems.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-gray-800 metal-accent px-3 py-1 text-xs border border-gray-700">MONGODB</span>
+                            <span class="bg-gray-800 metal-accent px-3 py-1 text-xs border border-gray-700">REDIS</span>
+                            <span class="bg-gray-800 metal-accent px-3 py-1 text-xs border border-gray-700">ARCHITECTURE</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <a href="#" class="rust-accent hover:metal-accent">INSPECT</a>
+                            <a href="#" class="metal-accent hover:rust-accent">SPECIFICATIONS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="industrial-font text-4xl mb-4">ENGINEERING SPECIFICATIONS</h2>
+                <div class="structural-line mx-auto w-48"></div>
+                <p class="metal-accent max-w-2xl mx-auto">Material strengths and structural capabilities</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div>
+                    <h3 class="industrial-font text-2xl mb-8 rust-accent">MATERIAL STRENGTHS</h3>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between mb-3">
+                                <span class="metal-accent font-bold">PYTHON FRAMEWORK</span>
+                                <span class="rust-accent">90%</span>
+                            </div>
+                            <div class="skill-bar-industrial">
+                                <div class="skill-progress-industrial" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-3">
+                                <span class="metal-accent font-bold">JAVA STRUCTURE</span>
+                                <span class="rust-accent">85%</span>
+                            </div>
+                            <div class="skill-bar-industrial">
+                                <div class="skill-progress-industrial" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-3">
+                                <span class="metal-accent font-bold">SYSTEMS ARCHITECTURE</span>
+                                <span class="rust-accent">80%</span>
+                            </div>
+                            <div class="skill-bar-industrial">
+                                <div class="skill-progress-industrial" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-3">
+                                <span class="metal-accent font-bold">INFRASTRUCTURE</span>
+                                <span class="rust-accent">75%</span>
+                            </div>
+                            <div class="skill-bar-industrial">
+                                <div class="skill-progress-industrial" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="industrial-font text-2xl mb-8 rust-accent">TOOL SPECIFICATIONS</h3>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="text-center p-6 border-3 border-gray-700 hover:border-rust-accent transition-all duration-300">
+                            <i class="fab fa-react metal-accent text-3xl mb-3"></i>
+                            <div class="metal-accent font-bold">REACT</div>
+                        </div>
+                        <div class="text-center p-6 border-3 border-gray-700 hover:border-rust-accent transition-all duration-300">
+                            <i class="fab fa-node-js metal-accent text-3xl mb-3"></i>
+                            <div class="metal-accent font-bold">NODE.JS</div>
+                        </div>
+                        <div class="text-center p-6 border-3 border-gray-700 hover:border-rust-accent transition-all duration-300">
+                            <i class="fas fa-database metal-accent text-3xl mb-3"></i>
+                            <div class="metal-accent font-bold">MONGODB</div>
+                        </div>
+                        <div class="text-center p-6 border-3 border-gray-700 hover:border-rust-accent transition-all duration-300">
+                            <i class="fab fa-docker metal-accent text-3xl mb-3"></i>
+                            <div class="metal-accent font-bold">DOCKER</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="industrial-font text-xl mb-4 rust-accent">ENGINEERING DISCIPLINES</h3>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-gray-800 metal-accent px-4 py-2 text-sm border border-gray-700">SYSTEMS ENGINEERING</span>
+                        <span class="bg-gray-800 metal-accent px-4 py-2 text-sm border border-gray-700">STRUCTURAL DESIGN</span>
+                        <span class="bg-gray-800 metal-accent px-4 py-2 text-sm border border-gray-700">INFRASTRUCTURE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 concrete-bg">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="industrial-font text-4xl mb-4">CONSTRUCTION HISTORY</h2>
+                <div class="structural-line mx-auto w-48"></div>
+                <p class="metal-accent max-w-2xl mx-auto">Major engineering projects and structural achievements</p>
+            </div>
+            
+            <div class="timeline-industrial">
+                <!-- Experience 1 -->
+                <div class="timeline-item-industrial">
+                    <div class="timeline-dot-industrial"></div>
+                    <div class="card-industrial">
+                        <div class="flex flex-col md:flex-row md:items-center mb-4">
+                            <h3 class="industrial-font text-xl md:w-1/2 rust-accent">STRUCTURAL ENGINEER</h3>
+                            <span class="metal-accent md:w-1/2 md:text-right">SUMMER 2023</span>
+                        </div>
+                        <p class="rust-accent mb-4 font-bold">TECH CONSTRUCTION INC.</p>
+                        <ul class="list-none metal-accent space-y-3 text-sm">
+                            <li class="flex items-start">
+                                <i class="fas fa-wrench rust-accent mr-3 mt-1"></i>
+                                <span>Engineered enterprise-scale structural frameworks and load-bearing systems</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-wrench rust-accent mr-3 mt-1"></i>
+                                <span>Implemented structural integrity testing and stress analysis protocols</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-wrench rust-accent mr-3 mt-1"></i>
+                                <span>Designed fail-safe mechanisms and redundancy systems</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="timeline-item-industrial">
+                    <div class="timeline-dot-industrial"></div>
+                    <div class="card-industrial">
+                        <div class="flex flex-col md:flex-row md:items-center mb-4">
+                            <h3 class="industrial-font text-xl md:w-1/2 rust-accent">SITE FOREMAN</h3>
+                            <span class="metal-accent md:w-1/2 md:text-right">2022 - PRESENT</span>
+                        </div>
+                        <p class="rust-accent mb-4 font-bold">UNIVERSITY ENGINEERING LAB</p>
+                        <ul class="list-none metal-accent space-y-3 text-sm">
+                            <li class="flex items-start">
+                                <i class="fas fa-wrench rust-accent mr-3 mt-1"></i>
+                                <span>Directed structural engineering workshops and construction methodologies</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-wrench rust-accent mr-3 mt-1"></i>
+                                <span>Mentored junior engineers in structural principles and load analysis</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-wrench rust-accent mr-3 mt-1"></i>
+                                <span>Oversaw quality control and structural compliance standards</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="industrial-font text-4xl mb-4">REQUEST BLUEPRINT</h2>
+                <div class="structural-line mx-auto w-48"></div>
+                <p class="metal-accent max-w-2xl mx-auto">Commission an engineering project or structural consultation</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div>
+                    <form class="space-y-6">
+                        <input type="text" placeholder="PROJECT NAME" class="contact-input-industrial">
+                        <input type="email" placeholder="ENGINEERING CONTACT" class="contact-input-industrial">
+                        <input type="text" placeholder="STRUCTURAL REQUIREMENTS" class="contact-input-industrial">
+                        <textarea placeholder="PROJECT SPECIFICATIONS" rows="5" class="contact-input-industrial"></textarea>
+                        <button type="submit" class="w-full px-8 py-4 bg-1a1a1a border-3 border-gray-700 metal-accent hover:border-rust-accent hover:rust-accent transition-all duration-300 industrial-font">
+                            SUBMIT BLUEPRINT REQUEST
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="card-industrial">
+                        <h3 class="industrial-font text-xl mb-6 rust-accent">ENGINEERING OFFICE</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-800 border-2 border-gray-700 flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope metal-accent"></i>
+                                </div>
+                                <div>
+                                    <p class="metal-accent font-bold">john.doe@engineering.dev</p>
+                                    <p class="text-gray-600 text-sm">Structural Communications</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-800 border-2 border-gray-700 flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone metal-accent"></i>
+                                </div>
+                                <div>
+                                    <p class="metal-accent font-bold">+1 (123) 456-7890</p>
+                                    <p class="text-gray-600 text-sm">Engineering Hotline</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-800 border-2 border-gray-700 flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt metal-accent"></i>
+                                </div>
+                                <div>
+                                    <p class="metal-accent font-bold">New York, USA</p>
+                                    <p class="text-gray-600 text-sm">Global Engineering HQ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-industrial">
+                        <h3 class="industrial-font text-xl mb-6 rust-accent">ENGINEERING NETWORK</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 bg-gray-800 border-2 border-gray-700 flex items-center justify-center hover:border-rust-accent transition-all duration-300">
+                                <i class="fab fa-linkedin metal-accent"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-gray-800 border-2 border-gray-700 flex items-center justify-center hover:border-rust-accent transition-all duration-300">
+                                <i class="fab fa-github metal-accent"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-gray-800 border-2 border-gray-700 flex items-center justify-center hover:border-rust-accent transition-all duration-300">
+                                <i class="fab fa-twitter metal-accent"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t-3 border-gray-800 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="metal-accent text-sm">&copy; 2023 JOHN DOE ENGINEERING. ALL STRUCTURES PATENTED.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add industrial interactions
+        document.querySelectorAll('.card-industrial').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
+
+        // Animate skill bars on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress-industrial');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 500);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+    </script>
+</body>
+</html>

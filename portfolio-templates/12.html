@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe | Engineering Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+        }
+        .luxury-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .gold-accent {
+            color: #d4af37;
+        }
+        .gold-bg {
+            background: linear-gradient(135deg, #d4af37, #f7ef8a);
+        }
+        .dark-bg {
+            background: #0a0a0a;
+        }
+        .card-luxury {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 2px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+        .card-luxury:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+        .skill-bar-luxury {
+            height: 2px;
+            background: #333;
+            overflow: hidden;
+        }
+        .skill-progress-luxury {
+            height: 100%;
+            background: linear-gradient(90deg, #d4af37, #f7ef8a);
+            transition: width 1.5s ease-in-out;
+        }
+        .nav-luxury a {
+            position: relative;
+            padding: 8px 20px;
+            transition: all 0.3s ease;
+        }
+        .nav-luxury a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: #d4af37;
+            transition: all 0.3s ease;
+        }
+        .nav-luxury a:hover:after {
+            width: 100%;
+            left: 0;
+        }
+        .timeline-luxury {
+            position: relative;
+        }
+        .timeline-luxury:before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, #d4af37, transparent);
+        }
+        .timeline-item-luxury {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 50px;
+        }
+        .timeline-dot-luxury {
+            position: absolute;
+            left: 24px;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d4af37;
+            z-index: 2;
+        }
+        .contact-input-luxury {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #333;
+            border-radius: 0;
+            padding: 16px;
+            color: #e5e5e5;
+            transition: all 0.3s ease;
+        }
+        .contact-input-luxury:focus {
+            border-color: #d4af37;
+            outline: none;
+        }
+        .gold-border {
+            border-color: #d4af37;
+        }
+        .section-divider {
+            border-bottom: 1px solid #333;
+        }
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -10px); }
+            100% { transform: translate(0, 0px); }
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 dark-bg border-b border-gray-800 py-6">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 gold-bg rounded-sm flex items-center justify-center">
+                        <i class="fas fa-crown text-black text-sm"></i>
+                    </div>
+                    <span class="luxury-font text-2xl font-light">JOHN <span class="gold-accent">DOE</span></span>
+                </div>
+                <div class="hidden md:flex nav-luxury space-x-8">
+                    <a href="#about" class="text-gray-400">ABOUT</a>
+                    <a href="#projects" class="text-gray-400">PROJECTS</a>
+                    <a href="#skills" class="text-gray-400">SKILLS</a>
+                    <a href="#experience" class="text-gray-400">EXPERIENCE</a>
+                    <a href="#contact" class="text-gray-400">CONTACT</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-gray-400 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
+                    <div class="inline-flex items-center px-4 py-2 border border-gray-700 text-sm text-gray-400 mb-8">
+                        <i class="fas fa-gem gold-accent mr-2"></i>PREMIUM ENGINEERING SOLUTIONS
+                    </div>
+                    <h1 class="luxury-font text-5xl md:text-6xl font-light mb-6 leading-tight">
+                        John Doe<br>
+                        <span class="gold-accent text-glow">Software</span><br>
+                        Architect
+                    </h1>
+                    <p class="text-lg text-gray-400 mb-8 max-w-md leading-relaxed">
+                        Crafting exceptional digital experiences through precision engineering and innovative design.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="px-8 py-3 gold-bg text-black font-medium hover:shadow-lg transition-all duration-300">
+                            VIEW PORTFOLIO
+                        </a>
+                        <a href="#contact" class="px-8 py-3 border border-gray-600 text-gray-300 font-medium hover:gold-border transition-all duration-300">
+                            GET IN TOUCH
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="w-80 h-80 border border-gray-700 relative overflow-hidden">
+                            <div class="w-full h-full bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
+                                <i class="fas fa-user-tie text-gray-600 text-8xl"></i>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-black border border-gray-700 px-6 py-3">
+                            <p class="font-medium gold-accent text-sm">AVAILABLE FOR CONSULTATION</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 section-divider">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="luxury-font text-4xl font-light mb-4">About Me</h2>
+                <div class="w-24 h-px gold-bg mx-auto mb-4"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Dedicated to excellence in software architecture and engineering innovation.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="lg:col-span-2">
+                    <div class="card-luxury p-12">
+                        <h3 class="luxury-font text-2xl font-light mb-8 gold-accent">Professional Excellence</h3>
+                        <div class="space-y-6 text-gray-300 leading-relaxed">
+                            <p>
+                                As a distinguished Computer Engineering student, I specialize in creating sophisticated 
+                                software solutions that combine technical precision with elegant design. My approach 
+                                emphasizes quality, performance, and attention to detail in every project.
+                            </p>
+                            <p>
+                                Through rigorous academic training and practical experience, I have developed expertise 
+                                in modern software architecture, system design, and innovative problem-solving. I am 
+                                currently seeking opportunities to contribute to premium technology initiatives.
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+                            <div class="text-center">
+                                <div class="text-2xl font-light gold-accent mb-2">12+</div>
+                                <div class="text-gray-400 text-sm">ELITE PROJECTS</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-light gold-accent mb-2">5</div>
+                                <div class="text-gray-400 text-sm">TECHNOLOGIES</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-light gold-accent mb-2">3.9</div>
+                                <div class="text-gray-400 text-sm">GPA SCORE</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-light gold-accent mb-2">2</div>
+                                <div class="text-gray-400 text-sm">CERTIFICATIONS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="card-luxury p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 gold-bg rounded-sm flex items-center justify-center mr-4">
+                                <i class="fas fa-graduation-cap text-black"></i>
+                            </div>
+                            <h3 class="luxury-font text-xl font-light gold-accent">Education</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <p class="font-medium text-gray-200">B.Tech Computer Engineering</p>
+                            <p class="text-gray-400 text-sm">ABC University</p>
+                            <p class="text-gray-500 text-sm">2021 - 2025</p>
+                            <p class="text-gray-500 text-sm">CGPA: 8.9/10</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card-luxury p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 gold-bg rounded-sm flex items-center justify-center mr-4">
+                                <i class="fas fa-bullseye text-black"></i>
+                            </div>
+                            <h3 class="luxury-font text-xl font-light gold-accent">Career Focus</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <p class="font-medium text-gray-200">Software Architecture</p>
+                            <p class="text-gray-400 text-sm">Seeking Premium Roles</p>
+                            <p class="text-gray-500 text-sm">Summer 2024 Availability</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card-luxury p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 gold-bg rounded-sm flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-black"></i>
+                            </div>
+                            <h3 class="luxury-font text-xl font-light gold-accent">Location</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <p class="font-medium text-gray-200">New York, USA</p>
+                            <p class="text-gray-400 text-sm">Global Remote Available</p>
+                            <p class="text-gray-500 text-sm">Select Relocation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 section-divider">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="luxury-font text-4xl font-light mb-4">Selected Works</h2>
+                <div class="w-24 h-px gold-bg mx-auto mb-4"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Premium projects demonstrating technical excellence and innovative solutions.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="card-luxury group">
+                    <div class="h-48 bg-gradient-to-br from-gray-900 to-black border-b border-gray-800 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <i class="fas fa-robot text-gold-400 text-6xl relative z-10"></i>
+                        <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm gold-accent px-3 py-1 text-sm">
+                            AI/ML
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="luxury-font text-xl font-light mb-3 gold-accent">Neural Vision System</h3>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            Advanced facial recognition platform with neural network architecture and real-time analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-gray-800 text-gold-200 px-3 py-1 text-xs">PYTHON</span>
+                            <span class="bg-gray-800 text-gold-200 px-3 py-1 text-xs">TENSORFLOW</span>
+                            <span class="bg-gray-800 text-gold-200 px-3 py-1 text-xs">OPENCV</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <a href="#" class="gold-accent hover:text-gold-300 font-medium">EXPLORE</a>
+                            <a href="#" class="text-gray-500 hover:text-gray-300 font-medium">DETAILS</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="card-luxury group">
+                    <div class="h-48 bg-gradient-to-br from-gray-900 to-black border-b border-gray-800 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <i class="fas fa-mobile-alt text-gold-400 text-6xl relative z-10"></i>
+                        <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm gold-accent px-3 py-1 text-sm">
+                            MOBILE
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="luxury-font text-xl font-light mb-3 gold-accent">Executive Task Suite</h3>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            Premium cross-platform productivity application with enterprise-grade security features.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-gray-800 text-gold-200 px-3 py-1 text-xs">REACT NATIVE</span>
+                            <span class="bg-gray-800 text-gold-200 px-3 py-1 text-xs">FIREBASE</span>
+                            <span class="bg-gray-800 text-gold-200 px-3 py-1 text-xs">TYPESCRIPT</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <a href="#" class="gold-accent hover:text-gold-300 font-medium">EXPLORE</a>
+                            <a href="#" class="text-gray-500 hover:text-gray-300 font-medium">DETAILS</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="card-luxury group">
+                    <div class="h-48 bg-gradient-to-br from-gray-900 to-black border-b border-gray-800 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <i class="fas fa-chart-line text-gold-400 text-6xl relative z-10"></i>
+                        <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm gold-accent px-3 py-1 text-sm">
+                            DATA SCIENCE
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="luxury-font text-xl font-light mb-3 gold-accent">Quantum Analytics</h3>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            Sophisticated financial modeling and prediction platform using machine learning algorithms.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-gray-800 text-gold-200 px-3 py-1 text-xs">PYTHON</span>
+                            <span class="bg-gray-800 text-gold-200 px-3 py-1 text-xs">PANDAS</span>
+                            <span class="bg-gray-800 text-gold-200 px-3 py-1 text-xs">SCIKIT-LEARN</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <a href="#" class="gold-accent hover:text-gold-300 font-medium">EXPLORE</a>
+                            <a href="#" class="text-gray-500 hover:text-gray-300 font-medium">DETAILS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 section-divider">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="luxury-font text-4xl font-light mb-4">Technical Mastery</h2>
+                <div class="w-24 h-px gold-bg mx-auto mb-4"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Expertise in premium technologies and development methodologies.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div>
+                    <h3 class="luxury-font text-2xl font-light mb-8 gold-accent">Core Competencies</h3>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between mb-3">
+                                <span class="font-medium text-gray-200">Python Development</span>
+                                <span class="gold-accent font-light">90%</span>
+                            </div>
+                            <div class="skill-bar-luxury">
+                                <div class="skill-progress-luxury" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-3">
+                                <span class="font-medium text-gray-200">Java Architecture</span>
+                                <span class="gold-accent font-light">85%</span>
+                            </div>
+                            <div class="skill-bar-luxury">
+                                <div class="skill-progress-luxury" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-3">
+                                <span class="font-medium text-gray-200">JavaScript Engineering</span>
+                                <span class="gold-accent font-light">80%</span>
+                            </div>
+                            <div class="skill-bar-luxury">
+                                <div class="skill-progress-luxury" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-3">
+                                <span class="font-medium text-gray-200">System Design</span>
+                                <span class="gold-accent font-light">75%</span>
+                            </div>
+                            <div class="skill-bar-luxury">
+                                <div class="skill-progress-luxury" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="luxury-font text-2xl font-light mb-8 gold-accent">Elite Technologies</h3>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="text-center p-6 border border-gray-800 hover:gold-border transition-all duration-300">
+                            <i class="fab fa-react text-gray-400 text-2xl mb-3"></i>
+                            <div class="font-light text-gray-200">React</div>
+                        </div>
+                        <div class="text-center p-6 border border-gray-800 hover:gold-border transition-all duration-300">
+                            <i class="fab fa-node-js text-gray-400 text-2xl mb-3"></i>
+                            <div class="font-light text-gray-200">Node.js</div>
+                        </div>
+                        <div class="text-center p-6 border border-gray-800 hover:gold-border transition-all duration-300">
+                            <i class="fas fa-database text-gray-400 text-2xl mb-3"></i>
+                            <div class="font-light text-gray-200">MongoDB</div>
+                        </div>
+                        <div class="text-center p-6 border border-gray-800 hover:gold-border transition-all duration-300">
+                            <i class="fab fa-docker text-gray-400 text-2xl mb-3"></i>
+                            <div class="font-light text-gray-200">Docker</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="luxury-font text-xl font-light mb-4 gold-accent">Specializations</h3>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-gray-800 text-gold-200 px-4 py-2 text-sm font-light">SOFTWARE ARCHITECTURE</span>
+                        <span class="bg-gray-800 text-gold-200 px-4 py-2 text-sm font-light">MACHINE LEARNING</span>
+                        <span class="bg-gray-800 text-gold-200 px-4 py-2 text-sm font-light">CLOUD SYSTEMS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 section-divider">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="luxury-font text-4xl font-light mb-4">Professional Journey</h2>
+                <div class="w-24 h-px gold-bg mx-auto mb-4"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">A track record of excellence and innovation.</p>
+            </div>
+            
+            <div class="timeline-luxury">
+                <!-- Experience 1 -->
+                <div class="timeline-item-luxury">
+                    <div class="timeline-dot-luxury"></div>
+                    <div class="card-luxury p-8">
+                        <div class="flex flex-col md:flex-row md:items-center mb-6">
+                            <h3 class="luxury-font text-xl font-light text-gray-200 md:w-1/2">Senior Software Architect</h3>
+                            <span class="gold-accent font-light md:w-1/2 md:text-right">Summer 2023</span>
+                        </div>
+                        <p class="gold-accent mb-4 font-light">Tech Solutions International</p>
+                        <ul class="list-none text-gray-400 space-y-3 text-sm leading-relaxed">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs gold-accent mr-3 mt-1"></i>
+                                <span>Architected enterprise-scale web applications using cutting-edge technologies</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs gold-accent mr-3 mt-1"></i>
+                                <span>Led cross-functional teams in Agile development methodologies</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs gold-accent mr-3 mt-1"></i>
+                                <span>Implemented sophisticated RESTful APIs and database architectures</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="timeline-item-luxury">
+                    <div class="timeline-dot-luxury"></div>
+                    <div class="card-luxury p-8">
+                        <div class="flex flex-col md:flex-row md:items-center mb-6">
+                            <h3 class="luxury-font text-xl font-light text-gray-200 md:w-1/2">Technical Director</h3>
+                            <span class="gold-accent font-light md:w-1/2 md:text-right">2022 - Present</span>
+                        </div>
+                        <p class="gold-accent mb-4 font-light">University Innovation Lab</p>
+                        <ul class="list-none text-gray-400 space-y-3 text-sm leading-relaxed">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs gold-accent mr-3 mt-1"></i>
+                                <span>Directed technical workshops and innovation challenges for elite students</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs gold-accent mr-3 mt-1"></i>
+                                <span>Mentored aspiring engineers in advanced programming methodologies</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs gold-accent mr-3 mt-1"></i>
+                                <span>Curated industry partnerships for premium technical education</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="luxury-font text-4xl font-light mb-4">Connect With Excellence</h2>
+                <div class="w-24 h-px gold-bg mx-auto mb-4"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Ready to discuss premium engineering opportunities.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div>
+                    <form class="space-y-6">
+                        <input type="text" placeholder="FULL NAME" class="w-full contact-input-luxury">
+                        <input type="email" placeholder="EMAIL ADDRESS" class="w-full contact-input-luxury">
+                        <input type="text" placeholder="SUBJECT" class="w-full contact-input-luxury">
+                        <textarea placeholder="MESSAGE" rows="5" class="w-full contact-input-luxury"></textarea>
+                        <button type="submit" class="w-full px-8 py-4 gold-bg text-black font-medium hover:shadow-lg transition-all duration-300">
+                            SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="card-luxury p-8">
+                        <h3 class="luxury-font text-xl font-light mb-6 gold-accent">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 gold-bg rounded-sm flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-black"></i>
+                                </div>
+                                <div>
+                                    <p class="font-light text-gray-200">john.doe@example.com</p>
+                                    <p class="text-gray-500 text-sm">Primary Contact</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 gold-bg rounded-sm flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-black"></i>
+                                </div>
+                                <div>
+                                    <p class="font-light text-gray-200">+1 (123) 456-7890</p>
+                                    <p class="text-gray-500 text-sm">Business Line</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 gold-bg rounded-sm flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-black"></i>
+                                </div>
+                                <div>
+                                    <p class="font-light text-gray-200">New York, NY</p>
+                                    <p class="text-gray-500 text-sm">Global Headquarters</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-luxury p-8">
+                        <h3 class="luxury-font text-xl font-light mb-6 gold-accent">Professional Networks</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 border border-gray-700 rounded-sm flex items-center justify-center hover:gold-border transition-all duration-300">
+                                <i class="fab fa-linkedin-in text-gray-400"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 border border-gray-700 rounded-sm flex items-center justify-center hover:gold-border transition-all duration-300">
+                                <i class="fab fa-github text-gray-400"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 border border-gray-700 rounded-sm flex items-center justify-center hover:gold-border transition-all duration-300">
+                                <i class="fab fa-twitter text-gray-400"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-500 text-sm">&copy; 2023 John Doe. All Rights Reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:gold-accent text-sm">Privacy</a>
+                    <a href="#" class="text-gray-500 hover:gold-accent text-sm">Terms</a>
+                    <a href="#" class="text-gray-500 hover:gold-accent text-sm">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            // Add mobile menu functionality here
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animate skill bars when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress-luxury');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 500);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe skills section
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+    </script>
+</body>
+</html>

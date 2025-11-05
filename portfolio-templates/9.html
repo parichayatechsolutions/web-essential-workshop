@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe | Engineering Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        .blue-accent {
+            color: #3b82f6;
+        }
+        .orange-accent {
+            color: #f97316;
+        }
+        .blue-bg {
+            background-color: #3b82f6;
+        }
+        .orange-bg {
+            background-color: #f97316;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-modern {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .card-modern:hover {
+            border-color: #3b82f6;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .skill-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: #334155;
+            overflow: hidden;
+        }
+        .skill-progress {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #3b82f6, #f97316);
+            transition: width 1s ease-in-out;
+        }
+        .nav-modern a {
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .nav-modern a:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+        .timeline-modern {
+            position: relative;
+        }
+        .timeline-modern::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6, #f97316);
+            border-radius: 1px;
+        }
+        .timeline-item-modern {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 40px;
+        }
+        .timeline-dot-modern {
+            position: absolute;
+            left: 22px;
+            top: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #3b82f6;
+            z-index: 2;
+            border: 3px solid #0f172a;
+            box-shadow: 0 0 0 2px #f97316;
+        }
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -15px); }
+            100% { transform: translate(0, 0px); }
+        }
+        .contact-input {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #475569;
+            border-radius: 12px;
+            padding: 16px;
+            color: #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .contact-input:focus {
+            border-color: #3b82f6;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+        .shape-blob {
+            background: linear-gradient(135deg, #3b82f6, #f97316);
+            opacity: 0.1;
+            position: absolute;
+            z-index: 0;
+        }
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        .triangle {
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+        .project-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .project-tag.orange {
+            background: rgba(249, 115, 22, 0.1);
+            color: #f97316;
+        }
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Background Shapes -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="shape-blob hexagon w-64 h-64 floating" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="shape-blob triangle w-48 h-48 floating" style="top: 60%; left: 80%; animation-delay: 2s;"></div>
+        <div class="shape-blob hexagon w-40 h-40 floating" style="top: 20%; left: 75%; animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect py-4">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 blue-bg rounded-xl flex items-center justify-center">
+                        <i class="fas fa-microchip text-white text-lg"></i>
+                    </div>
+                    <span class="font-bold text-xl">JOHN<span class="orange-accent">DOE</span></span>
+                </div>
+                <div class="hidden md:flex nav-modern space-x-2">
+                    <a href="#about" class="text-slate-300">About</a>
+                    <a href="#projects" class="text-slate-300">Projects</a>
+                    <a href="#skills" class="text-slate-300">Skills</a>
+                    <a href="#experience" class="text-slate-300">Experience</a>
+                    <a href="#contact" class="text-slate-300">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-slate-300 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-effect mt-4 px-4 pt-2 pb-4 space-y-3">
+            <a href="#about" class="block py-2 text-slate-300">About</a>
+            <a href="#projects" class="block py-2 text-slate-300">Projects</a>
+            <a href="#skills" class="block py-2 text-slate-300">Skills</a>
+            <a href="#experience" class="block py-2 text-slate-300">Experience</a>
+            <a href="#contact" class="block py-2 text-slate-300">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
+                    <div class="inline-flex items-center px-4 py-2 card-modern text-sm text-slate-300 mb-6">
+                        <i class="fas fa-star blue-accent mr-2"></i>3rd Year Computer Engineering Student
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                        Engineering <span class="gradient-text">Innovation</span> Through Code
+                    </h1>
+                    <p class="text-xl text-slate-400 mb-8 max-w-2xl">
+                        Creating elegant solutions to complex problems through clean code, modern technologies, and innovative thinking.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#projects" class="px-6 py-3 blue-bg text-white rounded-xl font-semibold text-center hover:shadow-lg transition-all flex items-center justify-center">
+                            <i class="fas fa-rocket mr-2"></i>View Projects
+                        </a>
+                        <a href="#contact" class="px-6 py-3 card-modern text-slate-300 rounded-xl font-semibold text-center hover:border-blue-500 transition-all flex items-center justify-center">
+                            <i class="fas fa-envelope mr-2"></i>Get In Touch
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 flex justify-center relative">
+                    <div class="relative">
+                        <div class="w-80 h-80 rounded-3xl overflow-hidden border-4 border-slate-700">
+                            <div class="w-full h-full gradient-bg flex items-center justify-center">
+                                <i class="fas fa-laptop-code text-slate-300 text-8xl"></i>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 card-modern px-6 py-3">
+                            <p class="font-bold orange-accent">Seeking Internships</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">About Me</h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">Passionate engineer focused on creating efficient, scalable solutions.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="card-modern p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6">My Journey</h3>
+                        <p class="text-slate-400 mb-6">
+                            I'm a passionate 3rd-year Computer Engineering student with a strong focus on creating 
+                            clean, efficient software solutions. I believe in the power of well-designed code to 
+                            solve complex problems and create meaningful impact in the digital world.
+                        </p>
+                        <p class="text-slate-400 mb-8">
+                            Through my coursework and personal projects, I've developed expertise in programming, 
+                            data structures, and software engineering principles. I'm actively seeking internship 
+                            opportunities to apply my skills in real-world scenarios and contribute to innovative projects.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold blue-accent mb-2">12+</div>
+                                <div class="text-slate-400 text-sm">Projects</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold orange-accent mb-2">5+</div>
+                                <div class="text-slate-400 text-sm">Languages</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold blue-accent mb-2">3</div>
+                                <div class="text-slate-400 text-sm">Internships</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold orange-accent mb-2">2</div>
+                                <div class="text-slate-400 text-sm">Certifications</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="card-modern p-6 rounded-2xl">
+                        <div class="w-12 h-12 blue-bg rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-graduation-cap text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Education</h3>
+                        <p class="text-slate-400">B.Tech Computer Engineering</p>
+                        <p class="text-slate-500 text-sm">ABC University | 2021-2025</p>
+                        <p class="text-slate-500 text-sm">CGPA: 8.9/10</p>
+                    </div>
+                    
+                    <div class="card-modern p-6 rounded-2xl">
+                        <div class="w-12 h-12 orange-bg rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-bullseye text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Career Focus</h3>
+                        <p class="text-slate-400">Software Development & AI</p>
+                        <p class="text-slate-500 text-sm">Seeking Summer 2024 Internship</p>
+                    </div>
+                    
+                    <div class="card-modern p-6 rounded-2xl">
+                        <div class="w-12 h-12 blue-bg rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Location</h3>
+                        <p class="text-slate-400">New York, USA</p>
+                        <p class="text-slate-500 text-sm">Open to Remote Opportunities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Featured Projects</h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">A showcase of my technical abilities and creative problem-solving.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="card-modern overflow-hidden">
+                    <div class="h-48 gradient-bg relative overflow-hidden border-b border-slate-700">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-robot text-blue-400 text-6xl"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 glass-effect text-blue-400 px-3 py-1 rounded-full text-sm font-semibold">
+                            AI/ML
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Smart Attendance</h3>
+                        <p class="text-slate-400 mb-4">Facial recognition system for automated attendance tracking using Python and OpenCV.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">OpenCV</span>
+                            <span class="project-tag orange">Machine Learning</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="#" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center">
+                                <i class="fab fa-github mr-2"></i> Code
+                            </a>
+                            <a href="#" class="text-slate-400 hover:text-slate-300 font-semibold flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="card-modern overflow-hidden">
+                    <div class="h-48 gradient-bg relative overflow-hidden border-b border-slate-700">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-orange-400 text-6xl"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 glass-effect text-orange-400 px-3 py-1 rounded-full text-sm font-semibold">
+                            Mobile
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Task Manager</h3>
+                        <p class="text-slate-400 mb-4">Cross-platform task management app with cloud sync and team collaboration.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="project-tag">React Native</span>
+                            <span class="project-tag orange">Firebase</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="#" class="text-orange-400 hover:text-orange-300 font-semibold flex items-center">
+                                <i class="fab fa-github mr-2"></i> Code
+                            </a>
+                            <a href="#" class="text-slate-400 hover:text-slate-300 font-semibold flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="card-modern overflow-hidden">
+                    <div class="h-48 gradient-bg relative overflow-hidden border-b border-slate-700">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-blue-400 text-6xl"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 glass-effect text-blue-400 px-3 py-1 rounded-full text-sm font-semibold">
+                            Data Science
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Stock Predictor</h3>
+                        <p class="text-slate-400 mb-4">ML model for stock price prediction using historical data analysis.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="project-tag orange">Python</span>
+                            <span class="project-tag">TensorFlow</span>
+                            <span class="project-tag">Pandas</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="#" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center">
+                                <i class="fab fa-github mr-2"></i> Code
+                            </a>
+                            <a href="#" class="text-slate-400 hover:text-slate-300 font-semibold flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center px-6 py-3 card-modern text-slate-300 rounded-xl font-semibold hover:border-blue-500 transition-all">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Technical Skills</h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">Technologies and tools I use to bring ideas to life.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="card-modern p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold mb-6">Programming Languages</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Python</span>
+                                <span class="blue-accent">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">JavaScript</span>
+                                <span class="orange-accent">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Java</span>
+                                <span class="blue-accent">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">C/C++</span>
+                                <span class="orange-accent">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-modern p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold mb-6">Technologies & Tools</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="text-center p-4 rounded-xl bg-blue-500/10">
+                            <i class="fab fa-react text-blue-400 text-2xl mb-2"></i>
+                            <div class="font-medium">React</div>
+                        </div>
+                        <div class="text-center p-4 rounded-xl bg-orange-500/10">
+                            <i class="fab fa-node-js text-orange-400 text-2xl mb-2"></i>
+                            <div class="font-medium">Node.js</div>
+                        </div>
+                        <div class="text-center p-4 rounded-xl bg-blue-500/10">
+                            <i class="fas fa-database text-blue-400 text-2xl mb-2"></i>
+                            <div class="font-medium">MongoDB</div>
+                        </div>
+                        <div class="text-center p-4 rounded-xl bg-orange-500/10">
+                            <i class="fab fa-docker text-orange-400 text-2xl mb-2"></i>
+                            <div class="font-medium">Docker</div>
+                        </div>
+                        <div class="text-center p-4 rounded-xl bg-blue-500/10">
+                            <i class="fab fa-git-alt text-blue-400 text-2xl mb-2"></i>
+                            <div class="font-medium">Git</div>
+                        </div>
+                        <div class="text-center p-4 rounded-xl bg-orange-500/10">
+                            <i class="fas fa-fire text-orange-400 text-2xl mb-2"></i>
+                            <div class="font-medium">Firebase</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-4">Areas of Interest</h3>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-lg">Machine Learning</span>
+                        <span class="bg-orange-500/10 text-orange-400 px-4 py-2 rounded-lg">Web Development</span>
+                        <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-lg">Mobile Apps</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Experience</h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">My professional journey and contributions.</p>
+            </div>
+            
+            <div class="timeline-modern">
+                <!-- Experience 1 -->
+                <div class="timeline-item-modern">
+                    <div class="timeline-dot-modern"></div>
+                    <div class="card-modern p-6 rounded-2xl">
+                        <div class="flex flex-col md:flex-row md:items-center mb-4">
+                            <h3 class="text-xl font-bold md:w-1/2">Software Development Intern</h3>
+                            <span class="blue-accent font-semibold md:w-1/2 md:text-right">Summer 2023</span>
+                        </div>
+                        <p class="blue-accent mb-2 font-medium">Tech Solutions Inc.</p>
+                        <ul class="list-none text-slate-400 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs blue-accent mr-2 mt-1"></i>
+                                <span>Developed web applications using React and Node.js</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs orange-accent mr-2 mt-1"></i>
+                                <span>Collaborated in Agile team environment</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs blue-accent mr-2 mt-1"></i>
+                                <span>Implemented RESTful APIs and database integration</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs orange-accent mr-2 mt-1"></i>
+                                <span>Improved application performance by 15%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="timeline-item-modern">
+                    <div class="timeline-dot-modern"></div>
+                    <div class="card-modern p-6 rounded-2xl">
+                        <div class="flex flex-col md:flex-row md:items-center mb-4">
+                            <h3 class="text-xl font-bold md:w-1/2">Technical Club Head</h3>
+                            <span class="orange-accent font-semibold md:w-1/2 md:text-right">2022 - Present</span>
+                        </div>
+                        <p class="orange-accent mb-2 font-medium">University Coding Club</p>
+                        <ul class="list-none text-slate-400 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs blue-accent mr-2 mt-1"></i>
+                                <span>Organized workshops for 100+ students</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs orange-accent mr-2 mt-1"></i>
+                                <span>Mentored junior students in programming</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs blue-accent mr-2 mt-1"></i>
+                                <span>Coordinated industry guest lectures</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Let's Connect</h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">Interested in working together? Let's talk.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-slate-300 mb-2 font-medium">Name</label>
+                                <input type="text" id="name" class="w-full contact-input" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-slate-300 mb-2 font-medium">Email</label>
+                                <input type="email" id="email" class="w-full contact-input" placeholder="Your email">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-slate-300 mb-2 font-medium">Subject</label>
+                            <input type="text" id="subject" class="w-full contact-input" placeholder="Subject">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-slate-300 mb-2 font-medium">Message</label>
+                            <textarea id="message" rows="5" class="w-full contact-input" placeholder="Your message"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-6 py-3 blue-bg text-white rounded-xl font-semibold hover:shadow-lg transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="card-modern p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 blue-bg rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">john.doe@example.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 orange-bg rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">+1 (123) 456-7890</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 blue-bg rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">New York, USA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-modern p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4">Connect With Me</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 blue-bg rounded-lg flex items-center justify-center text-white hover:shadow-lg transition-all">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 orange-bg rounded-lg flex items-center justify-center text-white hover:shadow-lg transition-all">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 blue-bg rounded-lg flex items-center justify-center text-white hover:shadow-lg transition-all">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-slate-500 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2023 John Doe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Animate skill bars when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 300);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe skills section
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+    </script>
+</body>
+</html>
