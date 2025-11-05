@@ -1,9 +1,9 @@
 # 🌐 Web Essentials Workshop - Complete Learning Materials
 
-[![Website](https://img.shields.io/badge/Visit-Website-blue?style=for-the-badge&logo=google-chrome)](https://parichayatechsolutions.com)
-[![LinkedIn](https://img.shields.io/badge/Follow-LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/company/parichaya-tech-solutions)
-[![Instagram](https://img.shields.io/badge/Follow-Instagram-E4405F?style=for-the-badge&logo=instagram)](https://www.instagram.com/parichayatechsol)
-[![Facebook](https://img.shields.io/badge/Follow-Facebook-1877F2?style=for-the-badge&logo=facebook)](https://www.linkedin.com/in/parichaya-tech-solutions-3b7844157)
+[![Website](https://img.shields.io/badge/Visit-Website-blue?style=for-the-badge&logo=google-chrome)](https://parichayatechsolutions.com){:target="_blank"}
+[![LinkedIn](https://img.shields.io/badge/Follow-LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/company/parichaya-tech-solutions){:target="_blank"}
+[![Instagram](https://img.shields.io/badge/Follow-Instagram-E4405F?style=for-the-badge&logo=instagram)](https://www.instagram.com/parichayatechsol){:target="_blank"}
+[![Facebook](https://img.shields.io/badge/Follow-Facebook-1877F2?style=for-the-badge&logo=facebook)](https://www.linkedin.com/in/parichaya-tech-solutions-3b7844157){:target="_blank"}
 
 ## 📚 About This Repository
 
