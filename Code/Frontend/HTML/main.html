@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HTML Tags & Concepts — Live Demo</title>
+  <meta name="description" content="Interactive demo that shows most HTML tags and concepts with small examples." />
+  <style>
+    /* Minimal, pretty CSS for demo */
+    :root{
+      --bg:#f7f8fb; --card:#fff; --muted:#6b7280; --accent:#2563eb;
+      --radius:10px; --gap:18px; --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+         margin:0;background:linear-gradient(180deg,var(--bg),#eef2ff); color:#0f172a;}
+    .wrap{max-width:var(--max);margin:24px auto;padding:20px;}
+    header{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+    header img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+    h1{margin:0;font-size:1.4rem}
+    .intro{color:var(--muted);margin:6px 0 18px;font-size:0.95rem}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap)}
+    @media (max-width:880px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border-radius:var(--radius);padding:16px;
+          box-shadow:0 6px 18px rgba(15,23,42,0.06);overflow:auto}
+    h2{font-size:1rem;margin:0 0 8px}
+    p.lead{margin:0 0 12px;color:var(--muted)}
+    code, pre{background:#0f172a;color:#f8fafc;padding:4px 6px;border-radius:6px;font-family:monospace}
+    pre{padding:10px;white-space:pre-wrap}
+    ul{margin:6px 0 12px;padding-left:1.1rem}
+    .muted{color:var(--muted);font-size:0.9rem}
+    label{display:block;margin:6px 0;font-weight:600}
+    input,select,textarea,button{font:inherit;padding:8px;border-radius:8px;border:1px solid #e6edf8}
+    button{background:var(--accent);color:white;border:none;cursor:pointer}
+    .small{font-size:0.9rem;color:var(--muted)}
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{padding:8px;border:1px solid #eef2ff;text-align:left}
+    .actions a{margin-right:8px;color:var(--accent);text-decoration:none}
+    footer{margin-top:18px;color:var(--muted);font-size:0.9rem;text-align:center}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .pill{background:#eef2ff;color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:600}
+    /* Vis helpers for focus */
+    a:focus, button:focus, input:focus, textarea:focus { outline:3px solid rgba(37,99,235,0.18) }
+    /* visual code samples */
+    .sample{background:#0b1220;color:#e6eefb;padding:12px;border-radius:8px;font-size:0.92rem}
+    .preview-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><rect width='100%' height='100%' fill='%232563eb'/><text x='50%' y='55%' font-size='36' fill='white' text-anchor='middle' font-family='Arial' dy='.35em'>HTML</text></svg>" alt="logo">
+      <div>
+        <h1>HTML Tags & Concepts — Live Demo</h1>
+        <div class="intro">A single-file practical demo: semantic tags, text, lists, images, media, forms, tables, accessibility, microdata, and interactive elements.</div>
+        <div class="meta">
+          <span class="pill">HTML5</span>
+          <span class="pill">Accessibility</span>
+          <span class="pill">Progressive Enhancement</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- top grid -->
+    <section class="grid" aria-label="HTML fundamentals">
+      <!-- Text & semantics -->
+      <article class="card" id="text-semantics">
+        <h2>Text, Headings & Semantic Structure</h2>
+        <p class="lead">Headings, paragraphs and semantic layout help structure content for users and machines.</p>
+        <header><h3>Header / Nav example</h3></header>
+        <nav aria-label="Primary navigation">
+          <ul>
+            <li><a href="#text-semantics">Text</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#forms">Forms</a></li>
+          </ul>
+        </nav>
+
+        <section>
+          <h1>H1 — Document title (only one)</h1>
+          <h2>H2 — Section</h2>
+          <h3>H3 — Subsection</h3>
+          <p>This is a <strong>paragraph</strong> with <em>emphasis</em>, <mark>highlight</mark>, and an <a href="https://example.com" target="_blank" rel="noopener">external link</a>.</p>
+          <p class="muted">Abbreviation example: <abbr title="HyperText Markup Language">HTML</abbr></p>
+          <blockquote cite="https://developer.mozilla.org/">
+            “HTML is the standard markup language for documents designed to be displayed in a web browser.”
+            <footer class="small">— MDN Web Docs</footer>
+          </blockquote>
+        </section>
+      </article>
+
+      <!-- Lists & tables -->
+      <article class="card" id="lists-tables">
+        <h2>Lists, Tables & Inline Code</h2>
+        <p class="lead">Ordered / unordered / definition lists and data-table example.</p>
+
+        <h3>Lists</h3>
+        <ul>
+          <li>Unordered list item</li>
+          <li>Item with nested list
+            <ol>
+              <li>Ordered child 1</li>
+              <li>Ordered child 2</li>
+            </ol>
+          </li>
+          <li>Another item</li>
+        </ul>
+
+        <h3>Definition list</h3>
+        <dl>
+          <dt>HTML</dt><dd>HyperText Markup Language</dd>
+          <dt>CSS</dt><dd>Cascading Style Sheets</dd>
+        </dl>
+
+        <h3>Table (tabular data)</h3>
+        <div class="sample">
+<pre>&lt;table&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;Alice&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;</pre>
+        </div>
+        <table aria-describedby="table-desc">
+          <caption id="table-desc" class="small">Simple users table</caption>
+          <thead><tr><th>ID</th><th>Name</th><th>Email</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Alice</td><td>alice@example.com</td></tr>
+            <tr><td>2</td><td>Bob</td><td>bob@example.com</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- images / media -->
+      <article class="card" id="media">
+        <h2>Images, Figure & Responsive Images</h2>
+        <p class="lead">Use <code>&lt;figure&gt;</code> with <code>&lt;figcaption&gt;</code>. Demonstrating srcset & picture for responsive images.</p>
+
+        <figure>
+          <picture>
+            <source media="(max-width:500px)" srcset="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200'><rect width='100%' height='100%' fill='%23fde68a'/><text x='50%' y='50%' font-size='18' text-anchor='middle' fill='%23112'>mobile image</text></svg>">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='300'><rect width='100%' height='100%' fill='%23bfdbfe'/><text x='50%' y='50%' font-size='24' text-anchor='middle' fill='%23112'>desktop image (SVG)</text></svg>" alt="Demo responsive image" style="max-width:100%;height:auto;border-radius:8px;">
+          </picture>
+          <figcaption class="small">Figure: responsive image using <code>&lt;picture&gt;</code>.</figcaption>
+        </figure>
+
+        <h3>Audio / Video (native controls)</h3>
+        <div class="preview-row">
+          <audio controls>
+            <source src="" type="audio/mpeg">Your browser does not support audio element.
+          </audio>
+          <video controls width="280" poster="" style="border-radius:8px">
+            <source src="" type="video/mp4">Video not supported.
+          </video>
+        </div>
+      </article>
+
+      <!-- forms -->
+      <article class="card" id="forms">
+        <h2>Forms & Inputs (with validation)</h2>
+        <p class="lead">All common input types, labels, fieldset and accessibility hints.</p>
+
+        <form id="demo-form" novalidate>
+          <fieldset>
+            <legend>Contact form</legend>
+
+            <label for="fullname">Full name</label>
+            <input id="fullname" name="fullname" type="text" required minlength="2" aria-describedby="nameHelp">
+            <div id="nameHelp" class="small muted">Enter your full name.</div>
+
+            <label for="email1">Email</label>
+            <input id="email1" name="email" type="email" required>
+
+            <label for="age">Age (number)</label>
+            <input id="age" name="age" type="number" min="1" max="120">
+
+            <label for="favcolor">Favorite color</label>
+            <input id="favcolor" name="favcolor" type="color" value="#2563eb">
+
+            <label>Gender</label>
+            <label><input type="radio" name="gender" value="m"> Male</label>
+            <label><input type="radio" name="gender" value="f"> Female</label>
+
+            <label>Hobbies</label>
+            <label><input type="checkbox" name="hobby" value="code"> Code</label>
+            <label><input type="checkbox" name="hobby" value="music"> Music</label>
+
+            <label for="country">Country</label>
+            <select id="country" name="country">
+              <option value="">Choose</option>
+              <option>India</option>
+              <option>USA</option>
+              <option>UK</option>
+            </select>
+
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio" rows="3" placeholder="Short bio..."></textarea>
+
+            <div style="margin-top:10px">
+              <button type="submit">Submit</button>
+              <button type="reset" style="background:#e6eefc;color:var(--accent);border:1px solid #dbeafe;margin-left:6px">Reset</button>
+            </div>
+          </fieldset>
+        </form>
+
+        <div id="form-output" class="small muted" style="margin-top:12px"></div>
+      </article>
+
+      <!-- interactive & scripting -->
+      <article class="card" id="interactive">
+        <h2>Interactive Elements & Scripting</h2>
+        <p class="lead">details, summary, template, dialog, canvas and script tags.</p>
+
+        <details>
+          <summary>What's a detail tag?</summary>
+          <p>Details/summary provide disclosure widgets for collapsible content.</p>
+        </details>
+
+        <h3>Template + JS clone</h3>
+        <template id="todo-template">
+          <li><span class="todo-text"></span> <button class="done">Done</button></li>
+        </template>
+
+        <div style="margin:8px 0">
+          <input id="todo-input" placeholder="Add todo" style="padding:6px;border-radius:6px;border:1px solid #e6edf8">
+          <button id="todo-add">Add</button>
+        </div>
+        <ul id="todo-list" class="small muted"></ul>
+
+        <h3>Dialog (modal)</h3>
+        <button id="openModal">Open Modal</button>
+        <dialog id="dlg"><p>This is a dialog (modal).</p><menu><button id="closeDlg">Close</button></menu></dialog>
+
+        <h3>Progress & Meter</h3>
+        <div class="preview-row">
+          <label for="progress">Upload progress</label>
+          <progress id="progress" value="25" max="100" style="width:160px"></progress>
+          <meter value="0.7">70%</meter>
+          <button id="progress-inc">+10%</button>
+        </div>
+
+        <h3>Code & Pre (display)</h3>
+        <pre><code>&lt;script&gt;console.log('Hello')&lt;/script&gt;</code></pre>
+      </article>
+
+      <!-- data & microdata -->
+      <article class="card" id="data-micro">
+        <h2>Data Attributes, Microdata & Metadata</h2>
+        <p class="lead">data-* attributes, time, mark, meter; using microdata (schema.org).</p>
+
+        <p>Time example: <time datetime="2025-11-02">Nov 2, 2025</time></p>
+        <p>Mark example: Search <mark>HTML</mark> examples.</p>
+        <p>Data attribute example:
+          <span id="price" data-currency="INR" data-value="499">499</span>
+        </p>
+
+        <article itemscope itemtype="http://schema.org/Article">
+          <h3 itemprop="headline">Article: Why learn HTML</h3>
+          <p>By <span itemprop="author">Instructor</span> — <time itemprop="datePublished" datetime="2025-11-02">Nov 2, 2025</time></p>
+          <div itemprop="articleBody">Small example of structured data embedded in HTML.</div>
+        </article>
+      </article>
+
+      <!-- accessibility & metadata showcase -->
+      <article class="card" id="accessibility">
+        <h2>Accessibility & Best Practices</h2>
+        <p class="lead">ARIA, labels, focus, landmarks, keyboard usage and semantic ordering.</p>
+
+        <h3>ARIA example</h3>
+        <button aria-pressed="false" id="ariaToggle">Toggle ARIA</button>
+        <p class="small muted">Check button's <code>aria-pressed</code> attribute while toggling.</p>
+
+        <h3>Noscript & base</h3>
+        <p class="small">If JS is disabled, noscript content appears:</p>
+        <noscript><div style="background:#fff4e5;padding:8px;border-radius:6px">JavaScript is required for full demo experience.</div></noscript>
+      </article>
+
+    </section>
+
+    <!-- bottom full-width section for form + iframe + examples -->
+    <section style="margin-top:18px">
+      <div class="card">
+        <h2>Embedding & External Content</h2>
+        <p class="lead">iframe, object, embed and accessibility considerations.</p>
+
+        <h3>Iframe (embedding external site)</h3>
+        <iframe src="about:blank" title="Demo frame" width="100%" height="200" style="border-radius:8px;border:1px solid #eef2ff"></iframe>
+
+        <h3>Server-side include example (concept)</h3>
+        <p class="small muted">In JSP / server environments, use server-side includes for common headers/footers (example: <code>&lt;%@ include file='header.jsp' %&gt;</code>).</p>
+
+        <h3>Summary of tags shown</h3>
+        <p class="small muted">head, meta, base, link, script, noscript, header, nav, main, section, article, aside, footer, h1..h6, p, a, img, picture, figure, figcaption, ul, ol, dl, table, form, input types, select, textarea, button, details, summary, template, dialog, progress, meter, time, abbr, mark, code, pre, blockquote, data, canvas (not used), iframe, object.</p>
+      </div>
+    </section>
+
+    <footer class="small muted">Use this file to demo tags live — expand/modify examples during the class.</footer>
+  </div>
+
+  <script>
+    // Minimal interactivity for demo
+    document.getElementById('demo-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const out = document.getElementById('form-output');
+      if (!this.checkValidity()) {
+        out.textContent = 'Form errors — check required fields.';
+        out.style.color = '#b91c1c';
+        return;
+      }
+      const fd = new FormData(this);
+      out.style.color = '';
+      out.textContent = 'Form submitted (client-side demo): ' + JSON.stringify(Object.fromEntries(fd));
+      // progressive enhancement: in real app, form action posts to server
+    });
+
+    // Todo template demo
+    const todoAdd = document.getElementById('todo-add');
+    const todoInput = document.getElementById('todo-input');
+    const todoList = document.getElementById('todo-list');
+    const template = document.getElementById('todo-template');
+
+    todoAdd.addEventListener('click', () => {
+      const text = todoInput.value.trim();
+      if (!text) return;
+      const clone = template.content.cloneNode(true);
+      clone.querySelector('.todo-text').textContent = text;
+      clone.querySelector('.done').addEventListener('click', (e) => {
+        e.target.parentElement.style.textDecoration = 'line-through';
+      });
+      todoList.appendChild(clone);
+      todoInput.value = '';
+    });
+
+    // Dialog demo
+    const dlg = document.getElementById('dlg');
+    document.getElementById('openModal').addEventListener('click', () => dlg.showModal());
+    document.getElementById('closeDlg').addEventListener('click', () => dlg.close());
+
+    // Progress demo
+    const progress = document.getElementById('progress');
+    document.getElementById('progress-inc').addEventListener('click', () => {
+      progress.value = Math.min(progress.max, Number(progress.value) + 10);
+    });
+
+    // ARIA toggle demo
+    const ariaBtn = document.getElementById('ariaToggle');
+    ariaBtn.addEventListener('click', () => {
+      const pressed = ariaBtn.getAttribute('aria-pressed') === 'true';
+      ariaBtn.setAttribute('aria-pressed', String(!pressed));
+      ariaBtn.textContent = !pressed ? 'Pressed ✓' : 'Toggle ARIA';
+    });
+
+    // small helper: show price data attribute nicely
+    const price = document.getElementById('price');
+    price.textContent = `${price.getAttribute('data-value')} ${price.getAttribute('data-currency')}`;
+  </script>
+</body>
+</html>

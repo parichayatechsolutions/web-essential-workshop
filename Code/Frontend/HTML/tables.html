@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Table Demonstration</title>
+</head>
+<body>
+
+  <h1>HTML Tables - Demo</h1>
+
+  <h2>1️⃣ Basic Table</h2>
+  <table border="1">
+    <tr>
+      <th>Language</th>
+      <th>Type</th>
+      <th>Usage</th>
+    </tr>
+    <tr>
+      <td>HTML</td>
+      <td>Markup</td>
+      <td>Structure</td>
+    </tr>
+    <tr>
+      <td>CSS</td>
+      <td>Style Sheet</td>
+      <td>Design</td>
+    </tr>
+    <tr>
+      <td>JavaScript</td>
+      <td>Programming</td>
+      <td>Logic / Interactivity</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h2>2️⃣ Table with Caption</h2>
+  <table border="1">
+    <caption>Web Technologies Overview</caption>
+    <tr>
+      <th>Technology</th>
+      <th>Creator</th>
+      <th>Year</th>
+    </tr>
+    <tr>
+      <td>HTML</td>
+      <td>Tim Berners-Lee</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <td>CSS</td>
+      <td>Håkon Wium Lie</td>
+      <td>1994</td>
+    </tr>
+    <tr>
+      <td>JavaScript</td>
+      <td>Brendan Eich</td>
+      <td>1995</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h2>3️⃣ Table with Colspan</h2>
+  <table border="1">
+    <tr>
+      <th colspan="3">Student Details</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Course</th>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>21</td>
+      <td>Web Development</td>
+    </tr>
+    <tr>
+      <td>Sarah</td>
+      <td>22</td>
+      <td>Data Science</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h2>4️⃣ Table with Rowspan</h2>
+  <table border="1">
+    <tr>
+      <th rowspan="2">Department</th>
+      <th colspan="2">Employees</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+    </tr>
+    <tr>
+      <td rowspan="2">Engineering</td>
+      <td>John</td>
+      <td>Developer</td>
+    </tr>
+    <tr>
+      <td>Ravi</td>
+      <td>Tester</td>
+    </tr>
+    <tr>
+      <td>HR</td>
+      <td>Mary</td>
+      <td>Manager</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h2>5️⃣ Table with Header, Body, and Footer</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Income</th>
+        <th>Expenses</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>January</td>
+        <td>$2000</td>
+        <td>$1500</td>
+      </tr>
+      <tr>
+        <td>February</td>
+        <td>$2200</td>
+        <td>$1600</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>Total</th>
+        <th>$4200</th>
+        <th>$3100</th>
+      </tr>
+    </tfoot>
+  </table>
+
+  <hr>
+
+  <h2>6️⃣ Nested Table Example</h2>
+  <table border="1">
+    <tr>
+      <th>Course</th>
+      <th>Modules</th>
+    </tr>
+    <tr>
+      <td>Web Development</td>
+      <td>
+        <table border="1">
+          <tr>
+            <th>Module</th>
+            <th>Topic</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>HTML Basics</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>CSS Styling</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <p>✅ This file demonstrates various table elements and attributes such as <code>border</code>, <code>colspan</code>, <code>rowspan</code>, <code>caption</code>, <code>thead</code>, <code>tbody</code>, and <code>tfoot</code>.</p>
+
+</body>
+</html>

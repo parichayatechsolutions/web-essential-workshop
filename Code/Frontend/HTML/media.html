@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Media Elements Demo</title>
+</head>
+<body>
+
+  <h1>HTML Media Elements Demo</h1>
+  <p>This page demonstrates the use of <strong>media tags</strong> in HTML — images, audio, video, and embedded content.</p>
+  <hr>
+
+  <!-- IMAGES -->
+  <h2>1. Images</h2>
+  <p>The <code>&lt;img&gt;</code> tag is used to display images in a web page.</p>
+
+  <h3>Basic Example:</h3>
+  <img src="https://media.istockphoto.com/id/814423752/photo/eye-of-model-with-colorful-art-make-up-close-up.jpg?s=612x612&w=0&k=20&c=l15OdMWjgCKycMMShP8UK94ELVlEGvt7GmB_esHWPYE=" alt="Placeholder Image">
+
+  <h3>Image with Title and Alternate Text:</h3>
+  <img src="https://miro.medium.com/1*5gJzummAqpBDGATo0fjU6Q.jpeg" alt="HTML Demo Image" title="Hover text appears here">
+
+  <h3>Image with Width and Height Attributes:</h3>
+  <img src="https://miro.medium.com/1*5gJzummAqpBDGATo0fjU6Q.jpeg" alt="Resized Image" width="150" height="150">
+
+  <h3>Using <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code>:</h3>
+  <figure>
+    <img src="https://miro.medium.com/1*5gJzummAqpBDGATo0fjU6Q.jpeg" alt="Sample Landscape">
+    <figcaption>Figure 1: Example of a landscape image with caption.</figcaption>
+  </figure>
+
+  <hr>
+
+  <!-- AUDIO -->
+  <h2>2. Audio</h2>
+  <p>The <code>&lt;audio&gt;</code> tag is used to embed sound content such as music or narration.</p>
+
+  <h3>Audio with Controls:</h3>
+  <audio controls>
+    <source src="sample.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <h3>Audio with Loop and Autoplay:</h3>
+  <audio controls autoplay loop>
+    <source src="sample.mp3" type="audio/mpeg">
+  </audio>
+
+  <hr>
+
+  <!-- VIDEO -->
+  <h2>3. Video</h2>
+  <p>The <code>&lt;video&gt;</code> tag allows embedding videos into the webpage.</p>
+
+  <h3>Basic Video Example:</h3>
+  <video width="320" height="240" controls>
+    <source src="sample.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <h3>Video with Poster (Thumbnail Image):</h3>
+  <video width="320" height="240" controls poster="https://via.placeholder.com/320x240?text=Video+Preview">
+    <source src="sample.mp4" type="video/mp4">
+  </video>
+
+  <h3>Video with Autoplay, Loop and Muted:</h3>
+  <video width="320" height="240" autoplay loop muted>
+    <source src="sample.mp4" type="video/mp4">
+  </video>
+
+  <hr>
+
+  <!-- IFRAMES -->
+  <h2>4. Embedded Media (YouTube / Maps / External Sites)</h2>
+  <p>The <code>&lt;iframe&gt;</code> tag is used to embed other websites or online media content.</p>
+
+  <h3>YouTube Video Embed:</h3>
+  <iframe width="420" height="236" 
+    src="https://www.youtube.com/embed/tgbNymZ7vqY" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+
+  <h3>Google Maps Embed:</h3>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.142104985953!2d106.69418087451853!3d10.801949658721953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529292fabe04b%3A0xa8c5827cf5ac71dd!2sSample%20Location!5e0!3m2!1sen!2sin!4v1700000000000" 
+    width="420" 
+    height="236" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+
+  <hr>
+
+  <h2>5. Summary</h2>
+  <p><strong>Images</strong> — add visuals with <code>&lt;img&gt;</code> and captions using <code>&lt;figure&gt;</code>.<br>
+     <strong>Audio</strong> — play sound clips using <code>&lt;audio&gt;</code>.<br>
+     <strong>Video</strong> — embed and control videos using <code>&lt;video&gt;</code>.<br>
+     <strong>Iframes</strong> — embed external web content like YouTube, Maps, etc.</p>
+
+</body>
+</html>

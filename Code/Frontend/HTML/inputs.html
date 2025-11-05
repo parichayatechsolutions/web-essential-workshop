@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Form Elements & Input Types Demo</title>
+</head>
+<body>
+
+  <h1>HTML Forms and Input Types Demo</h1>
+  <p>This page demonstrates all form elements and input types in HTML.</p>
+  <hr>
+
+  <!-- Basic Form Structure -->
+  <h2>1. Basic Form Structure</h2>
+  <form action="/submit" method="post">
+    <p><label for="username">Username:</label>
+      <input type="text" id="username" name="username" placeholder="Enter your username">
+    </p>
+    <p><label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter password">
+    </p>
+    <p><button type="submit">Login</button></p>
+  </form>
+
+  <hr>
+
+  <!-- Various Input Types -->
+  <h2>2. Input Types</h2>
+
+  <form action="/submit" method="get">
+    <p><label for="text">Text:</label>
+      <input type="text" id="text" name="text" placeholder="Enter text">
+    </p>
+
+    <p><label for="password2">Password:</label>
+      <input type="password" id="password2" name="password2">
+    </p>
+
+    <p><label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="example@mail.com">
+    </p>
+
+    <p><label for="number">Number:</label>
+      <input type="number" id="number" name="number" min="1" max="100">
+    </p>
+
+    <p><label for="tel">Telephone:</label>
+      <input type="tel" id="tel" name="tel" placeholder="9876543210">
+    </p>
+
+    <p><label for="url">URL:</label>
+      <input type="url" id="url" name="url" placeholder="https://example.com">
+    </p>
+
+    <p><label for="search">Search:</label>
+      <input type="search" id="search" name="search" placeholder="Search here">
+    </p>
+
+    <p><label for="date">Date:</label>
+      <input type="date" id="date" name="date">
+    </p>
+
+    <p><label for="time">Time:</label>
+      <input type="time" id="time" name="time">
+    </p>
+
+    <p><label for="datetime">Datetime Local:</label>
+      <input type="datetime-local" id="datetime" name="datetime">
+    </p>
+
+    <p><label for="month">Month:</label>
+      <input type="month" id="month" name="month">
+    </p>
+
+    <p><label for="week">Week:</label>
+      <input type="week" id="week" name="week">
+    </p>
+
+    <p><label for="color">Color:</label>
+      <input type="color" id="color" name="color">
+    </p>
+
+    <p><label for="range">Range (1-100):</label>
+      <input type="range" id="range" name="range" min="0" max="100">
+    </p>
+
+    <p><label for="file">File Upload:</label>
+      <input type="file" id="file" name="file">
+    </p>
+
+    <hr>
+
+    <!-- Radio Buttons -->
+    <h3>3. Radio Buttons</h3>
+    <p>Gender:
+      <input type="radio" id="male" name="gender" value="male"> <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="female"> <label for="female">Female</label>
+      <input type="radio" id="other" name="gender" value="other"> <label for="other">Other</label>
+    </p>
+
+    <!-- Checkboxes -->
+    <h3>4. Checkboxes</h3>
+    <p>Select your hobbies:</p>
+    <p>
+      <input type="checkbox" id="reading" name="hobby" value="Reading">
+      <label for="reading">Reading</label>
+
+      <input type="checkbox" id="travel" name="hobby" value="Traveling">
+      <label for="travel">Traveling</label>
+
+      <input type="checkbox" id="sports" name="hobby" value="Sports">
+      <label for="sports">Sports</label>
+    </p>
+
+    <hr>
+
+    <!-- Select Dropdown -->
+    <h3>5. Select Dropdown</h3>
+    <p>
+      <label for="country">Select your country:</label>
+      <select id="country" name="country">
+        <option value="">--Select--</option>
+        <option value="india">India</option>
+        <option value="usa">USA</option>
+        <option value="uk">UK</option>
+      </select>
+    </p>
+
+    <!-- Textarea -->
+    <h3>6. Textarea</h3>
+    <p>
+      <label for="message">Your Message:</label><br>
+      <textarea id="message" name="message" rows="4" cols="40" placeholder="Write something here..."></textarea>
+    </p>
+
+    <!-- Fieldset and Legend -->
+    <h3>7. Fieldset and Legend</h3>
+    <fieldset>
+      <legend>Personal Information</legend>
+      <p><label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname">
+      </p>
+      <p><label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname">
+      </p>
+    </fieldset>
+
+    <hr>
+
+    <!-- Buttons -->
+    <h3>8. Buttons</h3>
+    <p><button type="submit">Submit Form</button></p>
+    <p><button type="reset">Reset Form</button></p>
+    <p><button type="button" onclick="alert('Hello! This is a button click example.')">Click Me</button></p>
+
+  </form>
+
+  <hr>
+
+  <h2>9. Summary</h2>
+  <p>This demo covers all input types and form-related elements — essential for collecting user input in web pages.</p>
+
+</body>
+</html>

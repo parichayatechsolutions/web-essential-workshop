@@ -1,0 +1,125 @@
+/* ========== Basic CSS Notes and Demonstration ========== */
+
+/* Element Selector */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background-color: #f8f8f8;
+  color: #333;
+  margin: 20px;
+}
+
+/* Heading Styling */
+h1, h2, h3 {
+  color: #004aad;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Paragraph Styling */
+p:hover {
+  color: #e63946;
+  cursor: pointer;
+}
+
+/* ID Selector Example */
+#intro {
+  background-color: #eaf3ff;
+  border-left: 5px solid #004aad;
+  padding: 10px;
+}
+
+/* Class Selector Example */
+.highlight {
+  color: #e63946;
+  font-weight: bold;
+  background-color: #fff3cd;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Link Styling */
+a {
+  color: #0077cc;
+  text-decoration: none;
+}
+a:hover {
+  color: #e63946;
+  text-decoration: underline;
+}
+
+/* Text Alignment */
+.center-text {
+  text-align: center;
+}
+.right-text {
+  text-align: right;
+}
+
+/* Lists Styling */
+ul, ol {
+  margin-left: 30px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+th, td {
+  border: 1px solid #999;
+  padding: 10px;
+  text-align: left;
+}
+th {
+  background-color: #004aad;
+  color: white;
+}
+
+/* Box Model Example */
+.box {
+  background-color: #fff;
+  border: 2px solid #004aad;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+/* Display Property Example */
+.inline {
+  display: inline;
+  color: green;
+}
+.block {
+  display: block;
+  color: blue;
+}
+
+/* Hover Effect Example */
+.hover-box {
+  background-color: #ddd;
+  padding: 15px;
+  transition: background-color 0.3s ease;
+}
+.hover-box:hover {
+  background-color: #cce7ff;
+}
+
+/* Position Example */
+.position-example {
+  position: relative;
+  background: #f2f2f2;
+  padding: 20px;
+  border: 1px dashed #aaa;
+}
+.position-example span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #004aad;
+  color: white;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+}
